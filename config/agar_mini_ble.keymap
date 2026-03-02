@@ -61,17 +61,16 @@
             #binding-cells = <0>;
             bindings = <&htt RBKT RPAR>, <&htt GT RBRC>;
         };
-    };
 
-    combos {
-        compatible = "zmk,combos";
-
-        Alfred {
-            bindings = <&kp F14>;
-            key-positions = <14 17>;
-            layers = <0>;
+        td_pnq: td_period,question {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_PERIOD,QUESTION";
+            #binding-cells = <0>;
+            bindings = <&kp PERIOD>, <&kp SLASH>, <&none>, <&none>;
         };
     };
+
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
@@ -80,7 +79,7 @@
             bindings = <
 &hl 4 TAB             &kp Q         &kp W             &kp E  &kp R        &kp T  &kp Y        &kp U  &kp I      &kp O              &kp P         &kp LEFT_BRACKET  &kp BSPC
 &hm LEFT_CONTROL F18  &kp A         &kp S             &kp D  &kp F        &kp G  &kp H        &kp J  &kp K      &kp L              &kp SEMI      &kp RET
-&kp LSHFT             &kp Z         &kp X             &kp C  &kp V        &kp B  &kp N        &kp M  &kp COMMA  &kp DOT            &kp RSHIFT    &hl 1 SLASH
+&kp LSHFT             &kp Z         &kp X             &kp C  &kp V        &kp B  &kp N        &kp M  &kp COMMA  &td_pnq            &kp RSHIFT    &hl 1 SLASH
                       &kp LEFT_ALT  &kp LEFT_COMMAND         &hl 2 SPACE         &hl 3 SPACE                    &kp RIGHT_COMMAND  &kp LEFT_ALT
             >;
         };
@@ -123,10 +122,10 @@
 
         Usb,Ble {
             bindings = <
-&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans  &trans        &trans  &out OUT_USB  &trans  &trans  &trans  &trans  &trans
-&trans  &trans        &trans        &trans          &trans  &trans        &trans  &trans        &trans  &trans  &trans  &trans
-&trans  &trans        &trans        &bt BT_CLR_ALL  &trans  &out OUT_BLE  &trans  &trans        &trans  &trans  &trans  &trans
-        &trans        &trans                        &trans                &trans                        &trans  &trans
+&kp C_RESET  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &trans  &trans        &trans  &out OUT_USB  &trans  &trans  &trans  &trans  &trans
+&trans       &trans        &trans        &trans          &trans  &trans        &trans  &trans        &trans  &trans  &trans  &trans
+&trans       &trans        &trans        &bt BT_CLR_ALL  &trans  &out OUT_BLE  &trans  &trans        &trans  &trans  &trans  &trans
+             &trans        &trans                        &trans                &trans                        &trans  &trans
             >;
         };
 
